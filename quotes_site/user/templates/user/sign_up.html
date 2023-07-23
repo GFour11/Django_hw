@@ -1,0 +1,47 @@
+{% extends 'quote/base2.html' %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="row">
+        <div class="form-group col-xs-3">
+            <label>Username: <br>
+                {{ form.username }}
+            </label>
+            {% if error_message %}
+                <span>{{ form.errors.username }}</span>
+            {% endif %}
+        </div>
+        </div>
+                <div class="row">
+        <div class="form-group col-xs-3">
+            <label>Email: <br>
+                {{ form.email }}
+            </label>
+            {% if error_message %}
+                <span>{{ form.errors.email }}</span>
+            {% endif %}
+        </div>
+        </div>
+                <div class="row">
+        <div class="form-group col-xs-3">
+            <label>Password: <br>
+                {{ form.password1 }}
+            </label>
+            {% if error_message %}
+                <span>{{ form.errors.password1 }}</span>
+            {% endif %}
+        </div>
+        </div>
+                <div class="row">
+        <div class="form-group col-xs-3">
+            <label>Repeat Password: <br>
+                {{ form.password2 }}
+            </label>
+            {% if error_message %}
+                <span>{{ form.errors.password2 }}</span>
+            {% endif %}
+        </div>
+        </div>
+        <button type="submit" class="btn btn-primary">SignUp</button>
+    </form>
+{% endblock %}

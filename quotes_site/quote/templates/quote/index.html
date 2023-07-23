@@ -1,0 +1,26 @@
+{% extends 'quote/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        {% for quote in quotes%}
+        <div class="quote" itemscope="" itemtype="http://schema.org/CreativeWork">
+                <span class="text" itemprop="text">{{quote.quotes}}</span>
+                <span>by <small class="author" itemprop="author">{{quote.author.fullname}}</small>
+                {% with fullname=quote.author.fullname %}
+                <a href="{% url 'quote:author-detail' fullname %}">(about)</a>
+                {% endwith %}
+                </span>
+                <div class="tags">
+
+                    Tags:
+                    <meta class="keywords">
+                    {% for tag in quote.tags %}
+                    <a class="tag">{{tag}}</a>
+                    {% endfor %}
+                </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
